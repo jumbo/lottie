@@ -1,11 +1,11 @@
-# Changing Animations At Runtime
+# 运行中修改动画
 
-Lottie can do more than just play beautiful animations. Lottie allows you to **change** animations at runtime.
+不仅可以播放美妙的动画，还可以让你在播放的过程中调整动画。
 
-## Say we want to create 4 toggle switches.
+## 假如要创建四个 switch 控件
 ![Toggle](/images/switch_Normal.gif)
 <br />
-Its easy to create the four switches and play them:
+创建并播放四个 switch 动画：
 ```swift
 let animationView = LOTAnimationView(name: "toggle");
 self.view.addSubview(animationView)
@@ -40,7 +40,7 @@ animationView4.loopAnimation = true
 animationView4.play()
 
 ```
-## Now lets change their colors
+## 改改颜色
 ![Recolored Toggle](/images/switch_BgColors.gif)
 ```swift
 animationView2.setValue(UIColor.green, forKeypath: "BG-On.Group 1.Fill 1.Color", atFrame: 0)
@@ -51,11 +51,11 @@ The keyPath is a dot seperated path of layer and property names from After Effec
 ![Key Path](/images/aftereffectskeypath.png)
 "BG-On.Group 1.Fill 1.Color"
 
-## Now lets change a couple of properties
+## 调整一些属性
 ![Multiple Colors](/images/switch_MultipleBgs.gif)
 ```swift
 animationView2.setValue(UIColor.green, forKeypath: "BG-On.Group 1.Fill 1.Color", atFrame: 0)
 animationView2.setValue(UIColor.red, forKeypath: "BG-Off.Group 1.Fill 1.Color", atFrame: 0)
 ```
 
-Lottie allows you to change **any** property that is animatable in After Effects. If a keyframe does not exist, a linear keyframe is created for you. If a keyframe does exist then just its data is replaced.
+Lottie 允许修改After Effects中任一可执行动画的属性，如果缺少关键帧，一个线性插值的关键帧将自动创建，如果关键帧已存在，则直接执行数据替换。

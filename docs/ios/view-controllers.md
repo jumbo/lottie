@@ -1,6 +1,6 @@
 # View Controller Transitions
 
-Lottie comes with a `UIViewController` animation-controller for making custom viewController transitions!
+使用Lottie的 `UIViewController` 动画控制器，可以创建自定义的视图切换动画！
 
 ```
 #pragma mark -- View Controller Transitioning

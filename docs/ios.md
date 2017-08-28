@@ -1,15 +1,17 @@
-# Getting Started
-Lottie Uses Cocoapods, Carthage, Static and Dynamic modules.
-Lottie supports iOS 8+ and MacOS 10.10+
+# 开始
+Lottie 使用 Cocoapods, Carthage, Static 和 Dynamic modules，
+Lottie 支持iOS8+ 和 MacOS 10.10+
 
-# Installing Lottie
+
+# 安装
 
 ## Github Repo
-You can pull the [Lottie Github Repo](https://github.com/airbnb/lottie-ios/) and include the Lottie.xcodeproj to build a dynamic or static library.
+从 [Lottie Github Repo](https://github.com/airbnb/lottie-ios/) 拉取代码，引入 Lottie.xcodeproj 编译动态或静态库.
 
 ## Cocoapods
-Get [Cocoapods](https://cocoapods.org/)
-Add the pod to your podfile
+获取[Cocoapods](https://cocoapods.org/)
+为podfile添加如下信息：
+
 ```
 pod 'lottie-ios'
 ```
@@ -18,54 +20,51 @@ run
 pod install
 ```
 
-After installing the cocoapod into your project import Lottie with
- Objective C
+安装之后引入Lottie
+Objective C
 `#import <Lottie/Lottie.h>`
 Swift
 `import Lottie`
 
 ## Carthage
-Get [Carthage](https://github.com/Carthage/Carthage)
+获取 [Carthage](https://github.com/Carthage/Carthage)
 
-Add Lottie to your Cartfile
+为 Cartfile 添加 Lottie：
 ```
 github "airbnb/lottie-ios" "master"
 ```
-run
+运行
 ```
 carthage update
 ```
 
-In your application targets “General” tab under the “Linked Frameworks and Libraries” section, drag and drop lottie-ios.framework from the Carthage/Build/iOS directory that `carthage update` produced.
+在应用 targets 的 “General” 标签内，找到 “Linked Frameworks and Libraries”，并将 `carthage update` 生成的 lottie-ios.framework (位置：Carthage/Build/iOS) 拖入该处。
 
-# iOS Sample App
+# iOS 示例 App
 
-Clone this repo and try out [the Sample App](https://github.com/airbnb/lottie-ios/tree/master/Example)
-The repo can build a MacOS Example and an iOS Example
+克隆并运行 [示例 App](https://github.com/airbnb/lottie-ios/tree/master/Example)
+该项目包含了 iOS App 和 MacOS App。
 
-The iOS Example App demos several of the features of Lottie
+iOS App 演示了许多 Lottie 目前支持的特性。
 
 ![Example 1](/images/iosexample1.png)![Example 2](/images/iosexample2.png)
 ![Example 3](/images/iosexample3.png)
 
-The animation Explorer allows you to scrub, play, loop, and resize animations.
-Animations can be loaded from the app bundle or from [Lottie Files](http://www.lottiefiles.com) using the built in QR Code reader.
+动画浏览器可以让你查找，播放，循环和修改动画大小。可从app包中加载，也可以用内建的二维码扫描[Lottie Files](http://www.lottiefiles.com/)获去动画。
 
-## MacOS Sample App
+## MacOS 示例 App
 
-Clone this repo and try out [the Sample App](https://github.com/airbnb/lottie-ios/tree/master/Example)
-The repo can build a MacOS Example and an iOS Example
+克隆并编译 [the Sample App](https://github.com/airbnb/lottie-ios/tree/master/Example)
+包含了 iOS App 和 MacOS App。
 
 ![Lottie Viewer](/images/macexample.png)
 
-The Lottie Viewer for MacOS allows you to drag and drop JSON files to open, play, scrub and loop animations. This app is backed by the same animation code as the iOS app, so you will get an accurate representation of Mac and iOS animations.
+MacOS 版的Lottie预览程序支持拖放JSON文件来打开，播放，循环动画。其动画执行代码与iOS版共享，所以你可以更快展示动画效果。
 
+## Objective C 示例
 
-## Objective C Examples
-
-
-Lottie animations can be loaded from bundled JSON or from a URL
-To bundle JSON just add it and any images that the animation requires to your target in xcode.
+Lottie 动画支持打包的JSON文件或从URL加载JSON
+打包时只需将JSON和相关的图片一并加入xcode的target中。
 
 ```
 LOTAnimationView *animation = [LOTAnimationView animationNamed:@"Lottie"];
@@ -74,8 +73,7 @@ LOTAnimationView *animation = [LOTAnimationView animationNamed:@"Lottie"];
   // Do Something
 }];
 ```
-
-If you are working with multiple bundles you can use.
+使用多个来自多个bundle的动画：
 
 ```
 LOTAnimationView *animation = [LOTAnimationView animationNamed:@"Lottie" inBundle:[NSBundle YOUR_BUNDLE]];
@@ -85,31 +83,31 @@ LOTAnimationView *animation = [LOTAnimationView animationNamed:@"Lottie" inBundl
 }];
 ```
 
-Or you can load it programmatically from a NSURL
+使用NSURL 异步加载：
 ```
 LOTAnimationView *animation = [[LOTAnimationView alloc] initWithContentsOfURL:[NSURL URLWithString:URL]];
 [self.view addSubview:animation];
 ```
 
-Lottie supports the iOS `UIViewContentModes` aspectFit, aspectFill and scaleFill
+Lottie 支持iOS的`UIViewContentModes`：aspectFit, aspectFill and scaleFill
 
-You can also set the animation progress interactively.
+交互式的改变动画播放进程：
 ```
 CGPoint translation = [gesture getTranslationInView:self.view];
 CGFloat progress = translation.y / self.view.bounds.size.height;
 animationView.animationProgress = progress;
 ```
 
-Or you can play just a portion of the animation:
+播放片段：
 ```
 [lottieAnimation playFromProgress:0.25 toProgress:0.5 withCompletion:^(BOOL animationFinished) {
 // Do Something
 }];
 ```
-## Swift Examples
+## Swift 示例
 
-Lottie animations can be loaded from bundled JSON or from a URL
-To bundle JSON just add it and any images that the animation requires to your target in xcode.
+Lottie 动画支持打包的JSON文件或从URL加载JSON
+打包时只需将JSON和相关的图片一并加入xcode的target中。
 
 ```swift
 let animationView = LOTAnimationView(name: "LottieLogo")
@@ -117,28 +115,28 @@ self.view.addSubview(animationView)
 animationView.play()
 ```
 
-If your animation is in another bundle you can use
+使用多个来自多个bundle的动画：
 ```swift
 let animationView = LOTAnimationView(name: "LottieLogo" bundle:yourBundle)
 self.view.addSubview(animationView)
 animationView.play()
 ```
 
-Or you can load it asynchronously from a URL
+使用NSURL 异步加载：
 ```swift
 let animationView = LOTAnimationView(contentsOf: WebURL)
 self.view.addSubview(animationView)
 animationView.play()
 ```
 
-You can also set the animation progress interactively.
+交互式的改变动画播放进程：
 ```swift
 let translation = gesture.getTranslationInView(self.view)
 let progress = translation.y / self.view.bounds.size.height;
 animationView.animationProgress = progress
 ```
 
-Or you can play just a portion of the animation:
+播放片段：
 ```swift
 animationView.play(fromProgress: 0.25, toProgress: 0.5, withCompletion: nil)
 ```

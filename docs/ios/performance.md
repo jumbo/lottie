@@ -1,7 +1,7 @@
-# Performance
+# 性能
 
-## Sizing (px -> points/dp)
-Any pixel values in After Effects will get converted to density independent pixels (points on iOS and dp on Android). For example, if you want an animation to be 24dp x 24dp, the After Effects composition should be 24px x 24px.
+## 大小 (px -> points/dp)
+任何After Effects中的像素将会转为dp(iOS中的points)，比如如果动画预期是运行于 24dp x 24dp， 那 After Effects 中的“合成” 应为 24px x 24px。
 
-## Merge Paths
-There is a performance overhead to using merge paths. They will work but should be simplified or avoided if possible.
+## 合并路径
+尽管合并路径可以运行，但存在性能问题，应尽量避免。
